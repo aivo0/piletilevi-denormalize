@@ -12,13 +12,9 @@ on:
     - cron: "*/5 * * * *"
 
 permissions:
-  contents:
-    read
-    write
-  packages:
-    read
-  pull-requests:
-    write
+  contents: write
+  packages: read
+  pull-requests: write
 
 jobs:
   test:
