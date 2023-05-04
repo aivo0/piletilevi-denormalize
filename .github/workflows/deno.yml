@@ -45,7 +45,7 @@ jobs:
             exit 0
 
       - name: Commit changes
-        if: always()
+        if: failure()
         run: |
           git config --global user.email "action@github.com"
           git config --global user.name "GitHub Action"
@@ -53,7 +53,7 @@ jobs:
           git commit -m "Update calendar file"
           
       - name: Push changes
-        if: always()
+        if: failure()
         uses: ad-m/github-push-action@v0.6.0
         with:
           branch: main
