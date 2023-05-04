@@ -35,7 +35,16 @@ jobs:
 
       - name: Run script
         run: deno run -A json_to_cal.ts
-      
+
+      - name: Check for changes
+        run: |
+          if ! git diff --quiet; then
+            echo "Changes detected"
+          else
+            echo "No changes detected"
+            exit 1
+          fi
+
       - name: Commit changes
         run: |
           git config --global user.email "action@github.com"
