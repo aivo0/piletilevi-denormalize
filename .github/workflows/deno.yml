@@ -35,7 +35,12 @@ jobs:
 
       - name: Run script
         run: deno run -A json_to_cal.ts
-
+        
+      - name: Configure Git
+        run: |
+          git config --global user.email "action@github.com"
+          git config --global user.name "GitHub Action"
+        
       - name: Check for changes
         run: |
           if ! git diff --quiet; then
@@ -43,12 +48,11 @@ jobs:
           else
             echo "No changes detected"
             exit 0
+          fi
 
       - name: Commit changes
         if: failure()
         run: |
-          git config --global user.email "action@github.com"
-          git config --global user.name "GitHub Action"
           git add piletilevi.json
           git commit -m "Update calendar file"
           
