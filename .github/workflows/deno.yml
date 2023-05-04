@@ -42,7 +42,7 @@ jobs:
             echo "Changes detected"
           else
             echo "No changes detected"
-            exit 1
+            exit 0
           fi
 
       - name: Commit changes
