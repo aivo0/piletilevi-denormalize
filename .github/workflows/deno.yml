@@ -42,17 +42,19 @@ jobs:
             echo "Changes detected"
           else
             echo "No changes detected"
-            exit 0
+            exit_with_success
           fi
 
-      - name: Commit changes
+      - if: failure()
+        name: Commit changes
         run: |
           git config --global user.email "action@github.com"
           git config --global user.name "GitHub Action"
           git add piletilevi.json
           git commit -m "Update calendar file"
           
-      - name: Push changes
+      - if: failure()
+        name: Push changes
         uses: ad-m/github-push-action@v0.6.0
         with:
           branch: main
