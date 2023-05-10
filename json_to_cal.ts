@@ -23,7 +23,10 @@ serve(async (req: Request) => {
     // await Deno.writeTextFile("./piletilevi.json", JSON.stringify({events:results}));
 
 
-    return new Response(JSON.stringify({events:results}), {
+    return new Response(JSON.stringify({ events: results }), {
         status: 200,
-      });
+        headers: {
+            "content-type": "application/json; charset=UTF-8",
+        },
+    });
 });
